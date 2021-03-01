@@ -1,0 +1,25 @@
+body, html{
+    height: 100%;
+    background-repeat: no-repeat;
+    background: rgb(82, 174, 212);
+    background: linear-gradient(0deg, rgba(82,174,212,1)0%, rgba(7,4,94,1)62%);
+}
+
+.login-form{
+    margin: 0 auto;
+    max-width: 30%;
+    margin-top: 8%;
+    background-color: #e8f3ff;
+    border-radius: 7%;
+    padding: 2%;
+    margin-left: 37%!important;
+}
+
+.profile-img{
+    width: 50%;
+    height: 50%;
+    margin: 0 auto 1%;
+    display: block;
+    // -moz-border-radius:50%;
+    // -webkit-border-radius:50%;
+}
