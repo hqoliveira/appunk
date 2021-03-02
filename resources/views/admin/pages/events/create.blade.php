@@ -6,12 +6,10 @@
 
 @section('content')
 
-<h1>Cadastro de Evento</h1>
-
 <form action="{{ route('events.store') }}" method="POST">
     @csrf
     <div class="container">
-
+        <h1>Cadastro de Evento</h1>
         <div class="mb-3">
             <label for="formGroupExampleInput" class="form-label"></label>
             <input type="text" name="name" class="form-control" placeholder="Nome do Evento" value="{{old('name')}}">

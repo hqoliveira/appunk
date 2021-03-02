@@ -11,6 +11,12 @@
         <li>Data: {{ $event->date }}</li>
     </ul>
 
+    <form action="{{ route('events.destroy', $event->id) }}" method="POST">
+        @csrf
+        @method('DELETE')
+        <button type="submit" class="btn btn-danger">Deletar Evento</button>
+    </form>
+
 </div>
 
 

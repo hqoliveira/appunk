@@ -8,6 +8,15 @@ use Illuminate\Support\Facades\DB;
 
 class EventsController extends Controller
 {
+    protected $request;
+    private $repository;
+
+    public function __construct(Request $request, Event $event)
+    {
+        $this->request = $request;
+        $this->repository = $event;
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -38,7 +47,7 @@ class EventsController extends Controller
     public function store(Request $request)
     {
         $data = $request->only('name', 'date');
-        Event::create($data);
+        $this->repository->create($data);
         return redirect()->route('events.index');
     }
 
@@ -50,7 +59,7 @@ class EventsController extends Controller
      */
     public function show($id)
     {
-        if (!$event = Event::find($id))
+        if (!$event = $this->repository->find($id))
             return redirect()->back();
 
         return view('admin.pages.events.show', ['event' => $event]);
@@ -79,7 +88,7 @@ class EventsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        if (!$event = Event::find($id))
+        if (!$event = $this->repository->find($id))
             return redirect()->back();
 
         $event->update($request->all());
@@ -95,6 +104,11 @@ class EventsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $event = $this->repository->where('id', $id)->first();
+        if (!$event)
+            return redirect()->back();
+
+        $event->delete();
+        return redirect()->route('events.index');
     }
 }

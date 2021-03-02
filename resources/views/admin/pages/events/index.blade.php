@@ -26,6 +26,7 @@
                         <td>{{ $event->date }}</td>
                         <td>
                             <a href="{{ route('events.edit', $event->id) }}">Editar</a>
+                            <a href="{{ route('events.show', $event->id) }}">Detalhes</a>
                         </td>
                     </tr>
                 @endforeach
