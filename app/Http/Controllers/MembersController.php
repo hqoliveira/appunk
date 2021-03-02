@@ -20,8 +20,8 @@ class MembersController extends Controller
 
     public function index()
     {
-        //$members = Member::paginate(2);
-        return view('admin.pages.members.index'); //, ['members' => $members]);
+        $members = Member::paginate(10);
+        return view('admin.pages.members.index', ['members' => $members]);
     }
 
     /**

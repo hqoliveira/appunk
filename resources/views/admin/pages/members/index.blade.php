@@ -20,7 +20,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    {{-- @foreach ($members as $member)
+                    @foreach ($members as $member)
                         <tr>
                             <td>{{ $member->name }}</td>
                             <td>{{ $member->id_office }}</td>
@@ -32,7 +32,7 @@
                     @endforeach
                 </tbody>
             </table>
-            {!! $members->links() !!} --}}
+            {!! $members->links() !!}
 
         </div>
     </div>
