@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateMinistriesTable extends Migration
+class CreateOfficeTeamTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,9 @@ class CreateMinistriesTable extends Migration
      */
     public function up()
     {
-        Schema::create('ministries', function (Blueprint $table) {
+        Schema::create('office_team', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->integer('id_team');
             $table->timestamps();
         });
     }
@@ -27,6 +27,6 @@ class CreateMinistriesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('ministries');
+        Schema::dropIfExists('office_team');
     }
 }

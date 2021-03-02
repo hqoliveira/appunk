@@ -20,8 +20,8 @@ class MembersController extends Controller
 
     public function index()
     {
-        $members = Member::paginate(10);
-        return view('admin.pages.members.index', ['members' => $members]);
+        //$members = Member::paginate(2);
+        return view('admin.pages.members.index'); //, ['members' => $members]);
     }
 
     /**
@@ -45,7 +45,7 @@ class MembersController extends Controller
     public function store(StoreUpdateMembersRequest $request)
     {
         Member::create($request->only('name'));
-        
+
         //$data = $request->only('name');
         //Member::create($data);
         return redirect()->route('members.index');
