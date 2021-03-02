@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Event;
+use Illuminate\Support\Facades\DB;
 
 class EventsController extends Controller
 {
@@ -13,7 +15,8 @@ class EventsController extends Controller
      */
     public function index()
     {
-        return view('admin\pages\events\index');
+        $events = Event::paginate();
+        return view('admin\pages\events\index')->with('events', $events);
     }
 
     /**
@@ -23,7 +26,7 @@ class EventsController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.pages.events.create');
     }
 
     /**
@@ -34,7 +37,9 @@ class EventsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->only('name', 'date');
+        Event::create($data);
+        return redirect()->route('events.index');
     }
 
     /**

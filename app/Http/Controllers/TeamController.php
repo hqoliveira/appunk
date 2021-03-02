@@ -7,6 +7,11 @@ use App\Models\Team;
 
 class TeamController extends Controller
 {
+    public function __contruct(Request $request)
+    {
+        $this->request = $request;
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -36,7 +41,9 @@ class TeamController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->only('name');
+        Team::create($data);
+        return redirect()->route('team.index');
     }
 
     /**
