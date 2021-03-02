@@ -16,7 +16,7 @@ class EventsController extends Controller
     public function index()
     {
         $events = Event::paginate();
-        return view('admin\pages\events\index')->with('events', $events);
+        return view('admin\pages\events\index', ['events' => $events]);
     }
 
     /**
@@ -50,7 +50,10 @@ class EventsController extends Controller
      */
     public function show($id)
     {
-        //
+        if (!$event = Event::find($id))
+            return redirect()->back();
+
+        return view('admin.pages.events.show', ['event' => $event]);
     }
 
     /**
@@ -61,7 +64,10 @@ class EventsController extends Controller
      */
     public function edit($id)
     {
-        //
+        if (!$event = Event::find($id))
+            return redirect()->back();
+
+        return view('admin.pages.events.edit', compact('event'));
     }
 
     /**
@@ -73,7 +79,12 @@ class EventsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        if (!$event = Event::find($id))
+            return redirect()->back();
+
+        $event->update($request->all());
+
+        return redirect()->route('events.index');
     }
 
     /**

@@ -6,8 +6,6 @@
 
 @section('content')
 
-<h1>Eventos Cadastrados</h1>
-
 <div class="container-md">
     <h1>Eventos Cadastrados</h1>
     <p><a href="{{ route('events.create') }}" class="btn btn-primary">Novo Evento</a></p>
@@ -25,9 +23,9 @@
                 @foreach ($events as $event)
                     <tr>
                         <td>{{ $event->name }}</td>
-                        <td>{{ $events->date }}</td>
+                        <td>{{ $event->date }}</td>
                         <td>
-                            <a href="">Editar</a>
+                            <a href="{{ route('events.edit', $event->id) }}">Editar</a>
                         </td>
                     </tr>
                 @endforeach

@@ -21,7 +21,7 @@
             <div class="mb-3">
               <input name="date" class="form-control" type="date" value="" id="date-input">
             </div>
-          </div>
+        </div>
         <p><button type="submit" class="btn btn-success">Cadastrar</button></p>
     </div>
 </form>
