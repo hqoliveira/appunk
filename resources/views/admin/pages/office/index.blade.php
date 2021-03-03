@@ -15,6 +15,7 @@
             <thead>
                 <tr>
                     <th>Nome</th>
+                    <th>Ministério</th>
                     <th width='100'>Ações</th>
                 </tr>
             </thead>
@@ -22,6 +23,7 @@
                 @foreach ($offices as $office)
                     <tr>
                         <td>{{ $office->name }}</td>
+                        <td>{{ $office->id_ministriess }}</td>
                         <td>
                             <a href="{{ route('office.edit', $office->id) }}">Editar</a>
                             <a href="{{ route('office.show', $office->id) }}">Detalhes</a>

@@ -43,7 +43,7 @@ class OfficeController extends Controller
      */
     public function store(Request $request)
     {
-        $data = $request->only('name');
+        $data = $request->all();
         Office::create($data);
         return redirect()->route('office.index');
     }

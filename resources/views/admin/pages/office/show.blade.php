@@ -8,6 +8,7 @@
     <h1>Exibindo Detalhes do Cargo</h1>
     <ul>
         <li>Nome: {{$offices->name}}</li>
+        <li>Ministério: {{ $offices->id_ministries }}</li>
     </ul>
 
     <form action="{{ route('office.destroy', $offices->id) }}" method="POST">
