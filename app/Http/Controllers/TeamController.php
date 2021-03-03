@@ -7,6 +7,9 @@ use App\Models\Team;
 
 class TeamController extends Controller
 {
+    protected $request;
+    private $repository;
+
     public function __contruct(Request $request)
     {
         $this->request = $request;
@@ -19,7 +22,7 @@ class TeamController extends Controller
      */
     public function index()
     {
-        $team = Team::all();
+        $team = Team::latest()->paginate(5);
         return view('admin\pages\team\index', ['team' => $team]);
     }
 
@@ -54,7 +57,10 @@ class TeamController extends Controller
      */
     public function show($id)
     {
-        //
+        if (!$team = Team::find($id))
+            return redirect()->back();
+
+        return view('admin.pages.team.show', ['team' => $team]);
     }
 
     /**
@@ -65,7 +71,10 @@ class TeamController extends Controller
      */
     public function edit($id)
     {
-        return view('admin\pages\team\edit', $id);
+        if (!$team = Team::find($id))
+            return redirect()->back();
+
+        return view('admin\pages\team\edit', compact('team'));
     }
 
     /**
@@ -77,7 +86,12 @@ class TeamController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        if (!$team = Team::find($id))
+            return redirect()->back();
+
+        $team->update($request->all());
+
+        return redirect()->route('team.index');
     }
 
     /**
@@ -88,6 +102,11 @@ class TeamController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $team = Team::where('id', $id)->first();
+        if (!$team)
+            return redirect()->back();
+
+        $team->delete();
+        return redirect()->route('team.index');
     }
 }

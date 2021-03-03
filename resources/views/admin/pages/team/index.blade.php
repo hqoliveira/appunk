@@ -1,7 +1,7 @@
 @extends('admin.templates.app')
 
 @section('title', 'Ministérios')
-    
+
 @section('title-pagina', 'Ministérios')
 
 @section('content')
@@ -9,7 +9,7 @@
 <div class="container-md">
     <h1>Ministérios Cadastrados</h1>
     <p><a href="{{ route('team.create') }}" class="btn btn-primary">Novo Ministério</a></p>
-    
+
     <div class="container">
         <table class="table table-striped">
             <thead>
@@ -23,17 +23,18 @@
                     <tr>
                         <td>{{ $team->name }}</td>
                         <td>
-                            <a href="">Editar</a>
+                            <a href="{{ route('team.edit', $team->id) }}">Editar</a>
+                            <a href="{{ route('team.show', $team->id) }}">Detalhes</a>
                         </td>
                     </tr>
                 @endforeach
             </tbody>
         </table>
-        
-    
+
+
     </div>
 </div>
-    
+
 @endsection
 {{-- se for o adm vai mostrar todos os ministérios, porem se for o líder,
     vai mostrar somente a lista de membros referente ao ministério dele. --}}
