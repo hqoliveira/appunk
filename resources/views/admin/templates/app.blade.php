@@ -16,7 +16,7 @@
     <!-- Styles -->
     <link href="{!! asset('css/app.css') !!}" rel="stylesheet">
     <link rel="stylesheet" href="{!! asset('css/bootstrap.css') !!}">
-    
+
 </head>
 <body>
     <div id="app">
@@ -46,9 +46,8 @@
                                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                                     <li><a class="dropdown-item" href="{{ route('members.index') }}">Membros</a></li>
                                     <li><a class="dropdown-item" href="{{ route('team.index') }}">Ministérios</a></li>
+                                    <li><a class="dropdown-item" href="{{ route('office.index') }}">Cargos</a></li>
                                     <li><a class="dropdown-item" href="{{ route('events.index') }}">Eventos</a></li>
-                                    <li><hr class="dropdown-divider"></li>
-                                    <li><a class="dropdown-item" href="#">Separated link</a></li>
                                 </ul>
                             </li>
                         {{-- </ul> --}}

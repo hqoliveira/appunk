@@ -4,7 +4,7 @@
 
 @section('content')
 <div class="container">
-    <p><a class="btn btn-primary" href="{{route('team.index')}}">Back</a></p>
+    <p><a class="btn btn-primary" href="{{route('team.index')}}">Voltar</a></p>
     <h1>Exibindo Detalhes do Ministério</h1>
     <ul>
         <li>Nome: {{$team->name}}</li>

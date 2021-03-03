@@ -8,7 +8,6 @@ use App\Models\Team;
 class TeamController extends Controller
 {
     protected $request;
-    private $repository;
 
     public function __contruct(Request $request)
     {

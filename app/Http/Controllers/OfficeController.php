@@ -4,13 +4,14 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Office;
+use App\Models\Team;
 
 class OfficeController extends Controller
 {
     public function __contruct(Request $request)
     {
         $this->request = $request;
-        
+
     }
     /**
      * Display a listing of the resource.
@@ -19,8 +20,8 @@ class OfficeController extends Controller
      */
     public function index()
     {
-        $office = Office::all();
-        return view('admin.pages.office.index', ['office' => $office]);
+        $offices = Office::latest()->paginate(5);
+        return view('admin.pages.office.index', ['offices' => $offices]);
     }
 
     /**
@@ -30,7 +31,8 @@ class OfficeController extends Controller
      */
     public function create()
     {
-        //
+        $team = Team::all();
+        return view('admin.pages.office.create',  ['team' => $team]);
     }
 
     /**
@@ -41,7 +43,9 @@ class OfficeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->only('name');
+        Office::create($data);
+        return redirect()->route('office.index');
     }
 
     /**
@@ -52,7 +56,10 @@ class OfficeController extends Controller
      */
     public function show($id)
     {
-        //
+        if (!$offices = Office::find($id))
+            return redirect()->back();
+
+        return view('admin.pages.office.show', ['offices' => $offices]);
     }
 
     /**
@@ -63,7 +70,10 @@ class OfficeController extends Controller
      */
     public function edit($id)
     {
-        //
+        if (!$offices = Office::find($id))
+            return redirect()->back();
+
+        return view('admin\pages\office\edit', compact('offices'));
     }
 
     /**
@@ -75,7 +85,12 @@ class OfficeController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        if (!$offices = Office::find($id))
+           return redirect()->back();
+
+        $offices->update($request->all());
+
+        return redirect()->route('offices.index');
     }
 
     /**
@@ -86,6 +101,11 @@ class OfficeController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $offices = Office::where('id', $id)->first();
+        if (!$offices)
+            return redirect()->back();
+
+        $offices->delete();
+        return redirect()->route('office.index');
     }
 }
