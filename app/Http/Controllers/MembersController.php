@@ -20,7 +20,7 @@ class MembersController extends Controller
 
     public function index()
     {
-        $members = Member::paginate(10);
+        $members = Member::latest()->paginate(10);
         return view('admin.pages.members.index', ['members' => $members]);
     }
 
@@ -73,7 +73,10 @@ class MembersController extends Controller
      */
     public function edit($id)
     {
-        //
+        if (!$member = Member::find($id))
+            return redirect()->back();
+
+        return view('admin.pages.members.show', ['member' => $member]);
     }
 
     /**

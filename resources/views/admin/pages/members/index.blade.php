@@ -26,7 +26,8 @@
                             <td>{{ $member->id_office }}</td>
                             <td>{{ $member->id_ministries }}</td>
                             <td>
-                                <a href="{{ route('members.show', $member->id) }}">Editar</a>
+                                <a href="{{ route('members.edit', $member->id) }}">Editar</a>
+                                <a href="{{ route('members.show', $member->id) }}">Detalhes</a>
                             </td>
                         </tr>
                     @endforeach
