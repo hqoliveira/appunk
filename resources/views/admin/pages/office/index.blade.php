@@ -23,9 +23,9 @@
                 @foreach ($offices as $office)
                     <tr>
                         <td>{{ $office->name }}</td>
-                        <td>{{ $office->id_ministries }}</td>
+                        <td>{{ $office->id_team }}</td>
                         <td>
-                            <a href="{{ route('office.edit', $office->id) }}">Editar</a>
+                            <a href="{{ route('office.edit', $office) }}">Editar</a>
                             <a href="{{ route('office.show', $office->id) }}">Detalhes</a>
                         </td>
                     </tr>

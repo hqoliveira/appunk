@@ -17,7 +17,7 @@ class CreateMembersTable extends Migration
             $table->id();
             $table->string('name');
             $table->integer('id_office');
-            $table->integer('id_ministries');
+            $table->integer('id_team');
             $table->timestamps();
         });
     }

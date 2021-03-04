@@ -73,7 +73,7 @@ class OfficeController extends Controller
         if (!$offices = Office::find($id))
             return redirect()->back();
 
-        return view('admin\pages\office\edit', compact('offices'));
+        return view('admin\pages\office\edit', ['offices' => $offices]);
     }
 
     /**

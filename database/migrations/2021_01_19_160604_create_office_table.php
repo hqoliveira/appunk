@@ -16,7 +16,7 @@ class CreateOfficeTable extends Migration
         Schema::create('office', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->integer('id_ministries');
+            $table->integer('id_team');
             $table->timestamps();
         });
     }

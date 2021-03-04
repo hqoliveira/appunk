@@ -15,7 +15,7 @@
             <select class="form-select" aria-label="Selecione o Ministério">
                 <option selected>Ministério</option>
                 @foreach ($offices as $item)
-                    <option value="id_ministries">{{ $item->id_ministries }}</option>
+                    <option value="">{{ $item->id_team }}</option>
                 @endforeach
             </select>
         </div>
