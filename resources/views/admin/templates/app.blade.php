@@ -17,6 +17,20 @@
     <link href="{!! asset('css/app.css') !!}" rel="stylesheet">
     <link rel="stylesheet" href="{!! asset('css/bootstrap.css') !!}">
 
+    <!-- FullCalendar -->
+    <link href="{!! asset('css/fullcalendar.css') !!}" rel='stylesheet' />
+    <script src="{!! asset('js/fullcalendar.js') !!}"></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        var calendarEl = document.getElementById('calendar');
+        var calendar = new FullCalendar.Calendar(calendarEl, {
+          initialView: 'dayGridMonth'
+        });
+        calendar.render();
+      });
+
+    </script>
+
 </head>
 <body>
     <div id="app">

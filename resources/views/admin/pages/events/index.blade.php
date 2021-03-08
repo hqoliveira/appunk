@@ -2,8 +2,6 @@
 
 @section('title', 'Eventos')
 
-@section('title-pagina', 'Eventos')
-
 @section('content')
 
 <div class="container-md">
@@ -36,6 +34,5 @@
 
     </div>
 </div>
-
 @endsection
 

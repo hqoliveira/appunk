@@ -6,6 +6,7 @@
 
 <div class="container">
     <p><a href="{{ route('scale.create') }}" class="btn btn-primary">Nova Escala</a></p>
+
     <div class="container-fluid">
         <div class="row justify-content-center">
             <div class="col-md-8">

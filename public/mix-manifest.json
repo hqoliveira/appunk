@@ -3,5 +3,6 @@
     "/css/app.css": "/css/app.css",
     "/css/bootstrap.css": "/css/bootstrap.css",
     "/js/bootstrap.js": "/js/bootstrap.js",
-    "/js/bootstrap.bundle.min.js": "/js/bootstrap.bundle.min.js"
+    "/js/bootstrap.bundle.min.js": "/js/bootstrap.bundle.min.js",
+    "/js/fullcalendar.js": "/js/fullcalendar.js"
 }
