@@ -13,7 +13,7 @@ class CreateEventsTable extends Migration
      */
     public function up()
     {
-        Schema::create('events', function (Blueprint $table) {
+        Schema::create('tb_events', function (Blueprint $table) {
             $table->id();
             $table->string('name')->unique();
             $table->date('date');
@@ -28,6 +28,6 @@ class CreateEventsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('events');
+        Schema::dropIfExists('tb_events');
     }
 }

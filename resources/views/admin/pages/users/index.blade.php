@@ -2,38 +2,34 @@
 
 @section('title', 'Membros')
 
-@section('title-pagina', 'Membros')
-
 @section('content')
     <div class="container-md">
         <h1>Membros Cadastrados</h1>
 
-        <p><a class="btn btn-primary" href="{{ route('members.create') }}">Cadastrar Membro</a></p>
+        <p><a class="btn btn-primary" href="{{ route('users.create') }}">Cadastrar Membro</a></p>
         <div class="container">
             <table class="table table-striped">
                 <thead>
                     <tr>
                         <th>Nome</th>
-                        <th>Cargo</th>
                         <th>Ministério</th>
                         <th width='100'>Ações</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($members as $member)
+                    @foreach ($users as $user)
                         <tr>
-                            <td>{{ $member->name }}</td>
-                            <td>{{ $member->id_office }}</td>
-                            <td>{{ $member->id_ministries }}</td>
+                            <td>{{ $user->name }}</td>
+                            <td>{{ $user->id_ministries }}</td>
                             <td>
-                                <a href="{{ route('members.edit', $member->id) }}">Editar</a>
-                                <a href="{{ route('members.show', $member->id) }}">Detalhes</a>
+                                <a href="{{ route('users.edit', $user->id) }}">Editar</a>
+                                <a href="{{ route('users.show', $user->id) }}">Detalhes</a>
                             </td>
                         </tr>
                     @endforeach
                 </tbody>
             </table>
-            {!! $members->links() !!}
+            {!! $users->links() !!}
 
         </div>
     </div>

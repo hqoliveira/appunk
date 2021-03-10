@@ -11,8 +11,7 @@ Route::middleware('auth')->group(function(){
     Route::resource('team', 'TeamController');
     Route::resource('scale', 'ScaleController');
     Route::resource('events', 'EventsController');
-    Route::resource('office', 'OfficeController');
-    Route::resource('members', 'MembersController');
+    Route::resource('users', 'UsersController');
     Route::resource('register', 'RegisterController');
 });
 

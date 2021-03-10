@@ -8,7 +8,7 @@
 
     <div class="container">
         <h1>Cadastrar Novo Membro</h1>
-        <form action="{{ route('members.store') }}" method="POST">
+        <form action="{{ route('users.store') }}" method="POST">
             @csrf
             <div class="container">
 
@@ -21,14 +21,6 @@
                         <option selected>Ministério</option>
                         @foreach ($team as $item)
                             <option value="id_ministries">{{ $item->name }}</option>
-                        @endforeach
-                    </select>
-                </div>
-                <div class="mb-3">
-                    <select class="form-select" aria-label="Default select example">
-                        <option selected>Cargo</option>
-                        @foreach ($office as $item)
-                            <option value="id_office">{{ $item->name }}</option>
                         @endforeach
                     </select>
                 </div>

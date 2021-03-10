@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateEventsMembersTable extends Migration
+class CreateGroupEventsToUserTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateEventsMembersTable extends Migration
      */
     public function up()
     {
-        Schema::create('tb_groupEventsToUser', function (Blueprint $table) {
+        Schema::create('tb_group_Events_To_User', function (Blueprint $table) {
             $table->integer('event_id');
             $table->integer('user_id');
             $table->timestamps();
@@ -27,6 +27,6 @@ class CreateEventsMembersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tb_groupEventsToUser');
+        Schema::dropIfExists('tb_group_Events_To_User');
     }
 }

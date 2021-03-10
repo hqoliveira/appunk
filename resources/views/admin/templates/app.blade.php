@@ -58,9 +58,8 @@
                                     Gerenciar
                                 </a>
                                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <li><a class="dropdown-item" href="{{ route('members.index') }}">Membros</a></li>
+                                    <li><a class="dropdown-item" href="{{ route('users.index') }}">Membros</a></li>
                                     <li><a class="dropdown-item" href="{{ route('team.index') }}">Ministérios</a></li>
-                                    <li><a class="dropdown-item" href="{{ route('office.index') }}">Cargos</a></li>
                                     <li><a class="dropdown-item" href="{{ route('events.index') }}">Eventos</a></li>
                                 </ul>
                             </li>

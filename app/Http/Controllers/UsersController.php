@@ -2,17 +2,19 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Models\Office;
 use App\Models\Team;
+use App\User;
+use Illuminate\Http\Request;
 
-class OfficeController extends Controller
+class UsersController extends Controller
 {
+
     public function __contruct(Request $request)
     {
         $this->request = $request;
-
+        //$this->middleware('auth')->except(['index', 'show']);
     }
+
     /**
      * Display a listing of the resource.
      *
@@ -20,8 +22,8 @@ class OfficeController extends Controller
      */
     public function index()
     {
-        $offices = Office::latest()->paginate(5);
-        return view('admin.pages.office.index', ['offices' => $offices]);
+        $users = User::latest()->paginate(10);
+        return view('admin.pages.users.index', ['users' => $users]);
     }
 
     /**
@@ -31,8 +33,8 @@ class OfficeController extends Controller
      */
     public function create()
     {
-        $team = Team::all();
-        return view('admin.pages.office.create',  ['team' => $team]);
+        $users = User::all();
+        return view('admin\pages\users\create', ['users' => $users]);
     }
 
     /**
@@ -43,9 +45,8 @@ class OfficeController extends Controller
      */
     public function store(Request $request)
     {
-        $data = $request->all();
-        Office::create($data);
-        return redirect()->route('office.index');
+        User::create($request->only('name'));
+        return redirect()->route('users.index');
     }
 
     /**
@@ -56,10 +57,10 @@ class OfficeController extends Controller
      */
     public function show($id)
     {
-        if (!$offices = Office::find($id))
+        if (!$users = User::find($id))
             return redirect()->back();
 
-        return view('admin.pages.office.show', ['offices' => $offices]);
+        return view('admin.pages.users.show', ['users' => $users]);
     }
 
     /**
@@ -70,10 +71,10 @@ class OfficeController extends Controller
      */
     public function edit($id)
     {
-        if (!$offices = Office::find($id))
+        if (!$user = User::find($id))
             return redirect()->back();
 
-        return view('admin\pages\office\edit', ['offices' => $offices]);
+        return view('admin.pages.users.show', ['user' => $user]);
     }
 
     /**
@@ -85,12 +86,7 @@ class OfficeController extends Controller
      */
     public function update(Request $request, $id)
     {
-        if (!$offices = Office::find($id))
-           return redirect()->back();
-
-        $offices->update($request->all());
-
-        return redirect()->route('offices.index');
+        //
     }
 
     /**
@@ -101,11 +97,6 @@ class OfficeController extends Controller
      */
     public function destroy($id)
     {
-        $offices = Office::where('id', $id)->first();
-        if (!$offices)
-            return redirect()->back();
-
-        $offices->delete();
-        return redirect()->route('office.index');
+        //
     }
 }
