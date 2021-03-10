@@ -33,8 +33,9 @@ class UsersController extends Controller
      */
     public function create()
     {
-        $users = User::all();
-        return view('admin\pages\users\create', ['users' => $users]);
+        //passing team array object to choose the team on the view create
+        $team = Team::all();
+        return view('admin\pages\users\create', ['team' => $team]);
     }
 
     /**
@@ -45,7 +46,9 @@ class UsersController extends Controller
      */
     public function store(Request $request)
     {
-        User::create($request->only('name'));
+        User::create($request->all());
+        $user = new User;
+        $user->password = bcrypt($request->password);
         return redirect()->route('users.index');
     }
 
@@ -74,7 +77,7 @@ class UsersController extends Controller
         if (!$user = User::find($id))
             return redirect()->back();
 
-        return view('admin.pages.users.show', ['user' => $user]);
+        return view('admin.pages.users.edit', ['user' => $user]);
     }
 
     /**
@@ -97,6 +100,11 @@ class UsersController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $user = User::where('id', $id)->first();
+        if (!$user)
+            return redirect()->back();
+
+        $user->delete();
+        return redirect()->route('users.index');
     }
 }

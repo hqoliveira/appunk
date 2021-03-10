@@ -1,6 +1,6 @@
 @extends('admin.templates.app')
 
-@section('title', "Editar Evento {$event->name}")
+@section('title', "Editar Evento {$user->name}")
 
 @section('content')
 <div class="container">

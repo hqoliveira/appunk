@@ -15,6 +15,7 @@
             <thead>
                 <tr>
                     <th>Nome</th>
+                    <th>Líder</th>
                     <th width='100'>Ações</th>
                 </tr>
             </thead>
@@ -22,6 +23,7 @@
                 @foreach ($team as $team)
                     <tr>
                         <td>{{ $team->name }}</td>
+                        <td>{{ $team->leader }}</td>
                         <td>
                             <a href="{{ route('team.edit', $team->id) }}">Editar</a>
                             <a href="{{ route('team.show', $team->id) }}">Detalhes</a>

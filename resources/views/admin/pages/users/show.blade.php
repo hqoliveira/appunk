@@ -1,18 +1,23 @@
 @extends('admin.templates.app')
 
-@section('title', "Membro {$member->name}")
+@section('title', "Membro {$users->name}")
 
 @section('content')
 <div class="container">
-    <p><a class="btn btn-primary" href="{{route('members.index')}}">Back</a></p>
+    <p><a class="btn btn-primary" href="{{route('users.index')}}">Back</a></p>
     <h1>Exibindo Detalhes</h1>
     <ul>
-        <li>Nome: {{$member->name}}</li>
-        <li>Ministério: {{$member->id_ministries}}</li>
-        <li>Cargo: {{$member->id_office}}</li>
+        <li>Nome: {{$users->name}}</li>
+        <li>Ministério: </li>
+        <li>Telefone: {{ $users->telephone }}</li>
+        <li>Email: {{ $users->email }}</li>
     </ul>
-
-</div>   
+    <form action="{{ route('users.destroy', $users->id) }}" method="POST">
+        @csrf
+        @method('DELETE')
+        <button type="submit" class="btn btn-danger">Deletar Membro</button>
+    </form>
+</div>
 
 
 @endsection

@@ -17,13 +17,23 @@
                     <input type="text" name="name" class="form-control" placeholder="Nome" value="{{old('name')}}">
                 </div>
                 <div class="mb-3">
+                    <input type="text" name="telephone" class="form-control" placeholder="Telefone" value="{{old('telephone')}}">
+                </div>
+                <div class="mb-3">
+                    <input type="email" name="email" class="form-control" placeholder="Email" value="{{old('email')}}">
+                </div>
+                <div class="mb-3">
                     <select class="form-select" aria-label="Selecione o Ministério">
-                        <option selected>Ministério</option>
+                        <option value="team" selected>Ministério</option>
                         @foreach ($team as $item)
-                            <option value="id_ministries">{{ $item->name }}</option>
+                            <option value="team_id">{{ $item->name }}</option>
                         @endforeach
                     </select>
                 </div>
+                <div class="mb-3">
+                    <input type="password" name="password" class="form-control" id="Password" placeholder="Password">
+                </div>
+                </p>
                 <p><button type="submit" class="btn btn-success">Cadastrar</button></p>
             </div>
         </form>

@@ -12,7 +12,9 @@
                 <thead>
                     <tr>
                         <th>Nome</th>
-                        <th>Ministério</th>
+                        {{-- <th>Ministério</th> --}}
+                        <th>Telefone</th>
+                        <th>Email</th>
                         <th width='100'>Ações</th>
                     </tr>
                 </thead>
@@ -20,7 +22,9 @@
                     @foreach ($users as $user)
                         <tr>
                             <td>{{ $user->name }}</td>
-                            <td>{{ $user->id_ministries }}</td>
+                            {{-- <td>{{ $user->team_id }}</td> --}}
+                            <th>{{ $user->telephone }}</th>
+                            <td>{{ $user->email }}</td>
                             <td>
                                 <a href="{{ route('users.edit', $user->id) }}">Editar</a>
                                 <a href="{{ route('users.show', $user->id) }}">Detalhes</a>
