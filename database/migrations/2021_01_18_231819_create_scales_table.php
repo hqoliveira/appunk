@@ -14,7 +14,7 @@ class CreateScalesTable extends Migration
     public function up()
     {
         Schema::create('tb_scales', function (Blueprint $table) {
-            $table->integer('id')->primary();
+            $table->integer('id')->autoIncrement();
             $table->integer('team_id');
             $table->integer('event_id');
             $table->integer('user_id');

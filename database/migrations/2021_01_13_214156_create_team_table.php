@@ -15,7 +15,7 @@ class CreateTeamTable extends Migration
     public function up()
     {
         Schema::create('tb_team', function (Blueprint $table) {
-            $table->integer('id')->primary();
+            $table->integer('id')->autoIncrement();
             $table->string('name');
             $table->integer('leader')->unique();
             $table->foreign('leader')->references('id')->on('tb_users');
