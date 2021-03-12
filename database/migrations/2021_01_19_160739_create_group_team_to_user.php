@@ -14,8 +14,10 @@ class CreateGroupTeamToUser extends Migration
     public function up()
     {
         Schema::create('tb_group_Team_To_User', function (Blueprint $table) {
-            $table->integer('team_id');
-            $table->integer('user_id');
+            $table->integer('team_id')->unique();
+            $table->integer('user_id')->unique();
+            $table->foreign('team_id')->references('id')->on('tb_team');
+            $table->foreign('user_id')->references('id')->on('tb_users');
             $table->timestamps();
         });
     }

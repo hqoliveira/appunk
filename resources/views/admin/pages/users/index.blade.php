@@ -12,7 +12,7 @@
                 <thead>
                     <tr>
                         <th>Nome</th>
-                        {{-- <th>Ministério</th> --}}
+                        <th>Ministério</th>
                         <th>Telefone</th>
                         <th>Email</th>
                         <th width='100'>Ações</th>
@@ -22,7 +22,7 @@
                     @foreach ($users as $user)
                         <tr>
                             <td>{{ $user->name }}</td>
-                            {{-- <td>{{ $user->team_id }}</td> --}}
+                            <td>{{ $user->team_id }}</td>
                             <th>{{ $user->telephone }}</th>
                             <td>{{ $user->email }}</td>
                             <td>

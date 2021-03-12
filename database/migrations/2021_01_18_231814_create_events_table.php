@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateScalesTable extends Migration
+class CreateEventsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,10 @@ class CreateScalesTable extends Migration
      */
     public function up()
     {
-        Schema::create('tb_scales', function (Blueprint $table) {
-            $table->id();
+        Schema::create('tb_events', function (Blueprint $table) {
+            $table->integer('id')->primary();
+            $table->string('name')->unique();
+            $table->date('date');
             $table->timestamps();
         });
     }
@@ -26,6 +28,6 @@ class CreateScalesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tb_scales');
+        Schema::dropIfExists('tb_events');
     }
 }

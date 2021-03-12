@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateGroupEventsToTeamTable extends Migration
+class CreateScalesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,11 @@ class CreateGroupEventsToTeamTable extends Migration
      */
     public function up()
     {
-        Schema::create('tb_group_Events_To_Team', function (Blueprint $table) {
-            $table->integer('events_id');
+        Schema::create('tb_scales', function (Blueprint $table) {
+            $table->integer('id')->primary();
             $table->integer('team_id');
+            $table->integer('event_id');
+            $table->integer('user_id');
             $table->timestamps();
         });
     }
@@ -27,6 +29,6 @@ class CreateGroupEventsToTeamTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tb_group_Events_To_Team');
+        Schema::dropIfExists('tb_scales');
     }
 }
