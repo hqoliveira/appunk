@@ -8,6 +8,7 @@
     <h1>Exibindo Detalhes do Ministério</h1>
     <ul>
         <li>Nome: {{$team->name}}</li>
+        <li>Líder: {{ $team->leader }}</li>
     </ul>
 
     <form action="{{ route('team.destroy', $team->id) }}" method="POST">

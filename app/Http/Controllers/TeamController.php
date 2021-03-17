@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Team;
 use App\User;
+use Illuminate\Support\Facades\DB;
 
 class TeamController extends Controller
 {
@@ -45,8 +46,12 @@ class TeamController extends Controller
      */
     public function store(Request $request)
     {
-        $data = $request->all();
-        Team::create($data);
+        Team::create($request->all());
+        /*DB::table('tb_group_team_to_user')->insert([
+            'team_id' => $request['team_id'],
+            'user_id' => $request['user_id']
+        ]);*/
+
         return redirect()->route('team.index');
     }
 
@@ -72,10 +77,12 @@ class TeamController extends Controller
      */
     public function edit($id)
     {
+        $users = User::all();
+
         if (!$team = Team::find($id))
             return redirect()->back();
 
-        return view('admin\pages\team\edit', compact('team'));
+        return view('admin\pages\team\edit', compact('team', 'users'));
     }
 
     /**

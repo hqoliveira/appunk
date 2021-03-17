@@ -18,6 +18,4 @@
         <button type="submit" class="btn btn-danger">Deletar Membro</button>
     </form>
 </div>
-
-
 @endsection

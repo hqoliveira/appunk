@@ -2,7 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Event;
+use App\Models\Scale;
+use App\Models\Team;
+use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ScaleController extends Controller
 {
@@ -13,7 +18,10 @@ class ScaleController extends Controller
      */
     public function index()
     {
-        return view('admin.pages.scale.index');
+        $allTeam = DB::table('tb_team')
+                        ->select('id', 'name')
+                        ->get();
+        return view('admin.pages.scale.index', ['allTeam' => $allTeam]);
     }
 
     /**
@@ -23,7 +31,17 @@ class ScaleController extends Controller
      */
     public function create()
     {
-        return view('admin\pages\scale\create');
+        $users  = User::all();
+        $team   = Team::all();
+        $events = Event::all();
+        $scales = Scale::all();
+        return view('admin\pages\scale\create',
+                    [
+                        'users'  => $users,
+                        'team'   => $team,
+                        'events' => $events,
+                        'scales' => $scales
+                    ]);
     }
 
     /**
@@ -34,7 +52,8 @@ class ScaleController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Scale::create($request->all());
+        return redirect()->route('scale.index');
     }
 
     /**
@@ -45,7 +64,19 @@ class ScaleController extends Controller
      */
     public function show($id)
     {
-        //
+        $scale = DB::table('tb_scales')
+                    ->join('tb_team', 'team_id', '=', 'tb_team.id')
+                    ->join('tb_events', 'event_id', '=', 'tb_events.id')
+                    ->join('tb_users', 'user_id', '=', 'tb_users.id')
+                    ->select('tb_events.id',
+                             'tb_events.name as eventName',
+                             'tb_team.name as teamName',
+                             'tb_events.date',
+                             'tb_users.name as userName')
+                    ->where('tb_team.id', '=', $id)
+                    ->get();
+                    //dd($scale);
+        return view('admin.pages.scale.show', ['scale' => $scale]);
     }
 
     /**
@@ -79,6 +110,11 @@ class ScaleController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $scale = Scale::where('id', $id)->first();
+        if (!$scale)
+            return redirect()->back();
+
+        $scale->delete();
+        return redirect()->route('scale.index');
     }
 }

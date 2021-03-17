@@ -88,7 +88,12 @@ class UsersController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        if (!$user = User::find($id))
+            return redirect()->back();
+
+        $user->update($request->all());
+
+        return redirect()->route('users.index');
     }
 
     /**

@@ -19,6 +19,9 @@ class CreateScalesTable extends Migration
             $table->integer('event_id');
             $table->integer('user_id');
             $table->timestamps();
+            $table->foreign('team_id')->references('id')->on('tb_team');
+            $table->foreign('event_id')->references('id')->on('tb_events');
+            $table->foreign('user_id')->references('id')->on('tb_users');
         });
     }
 
