@@ -8,15 +8,16 @@ Route::get('/login', function(){
 })->name('login');
 
 Route::middleware('auth')->group(function(){
+    Route::resource('home', 'HomeController');
     Route::resource('team', 'TeamController');
     Route::resource('scale', 'ScaleController');
     Route::resource('events', 'EventsController');
     Route::resource('users', 'UsersController');
-    Route::resource('register', 'RegisterController');
+    Route::resource('register', 'Auth\RegisterController');
 });
 
 
 Auth::routes(['register' => true]);
 
 Route::redirect('/', 'home')->middleware('auth');
-Route::get('/home', 'HomeController@index')->name('home')->middleware('auth');
+//Route::get('/home', 'HomeController@index')->name('home')->middleware('auth');

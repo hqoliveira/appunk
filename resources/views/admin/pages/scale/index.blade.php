@@ -17,7 +17,9 @@
                                         <h5 class="card-title">{{ $team->name }}</h5>
                                         <div class="btn-group">
                                             <a class="btn btn-secondary" href="{{ route('scale.create') }}">Criar</a>
-                                            <a class="btn btn-secondary" href="{{ route('scale.show', $team->id) }}">Vizializar</a>
+                                            @isset($scale)
+                                                <a class="btn btn-secondary" href="{{ route('scale.show', $team->id) }}">View</a>
+                                            @endisset
                                         </div>
                                     </div>
                                 </div>

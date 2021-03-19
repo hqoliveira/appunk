@@ -21,7 +21,17 @@ class ScaleController extends Controller
         $allTeam = DB::table('tb_team')
                         ->select('id', 'name')
                         ->get();
-        return view('admin.pages.scale.index', ['allTeam' => $allTeam]);
+        $scale = DB::table('tb_scales')
+                    ->join('tb_team', 'team_id', '=', 'tb_team.id')
+                    ->join('tb_events', 'event_id', '=', 'tb_events.id')
+                    ->join('tb_users', 'user_id', '=', 'tb_users.id')
+                    ->select('tb_events.id',
+                            'tb_events.name as eventName',
+                            'tb_team.name as teamName',
+                            'tb_events.date',
+                            'tb_users.name as userName')
+                    ->get();
+        return view('admin.pages.scale.index', ['allTeam' => $allTeam, 'scale' => $scale]);
     }
 
     /**
@@ -75,7 +85,6 @@ class ScaleController extends Controller
                              'tb_users.name as userName')
                     ->where('tb_team.id', '=', $id)
                     ->get();
-                    //dd($scale);
         return view('admin.pages.scale.show', ['scale' => $scale]);
     }
 

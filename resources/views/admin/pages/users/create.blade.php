@@ -12,7 +12,7 @@
                 <div class="card">
                     <div class="card-header">{{ __('Cadastrar Novo Membro') }}</div>
                     <div class="card-body">
-                        <form method="POST" action="{{ route('users.store') }}">
+                        <form method="GET" action="{{ route('register.create') }}">
                             @csrf
                             <div class="form-group row">
                                 <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Nome') }}</label>

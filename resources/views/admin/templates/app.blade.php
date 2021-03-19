@@ -49,7 +49,7 @@
                     <ul class="navbar-nav nav-tabs me-auto mb-2 mb-lg-0">
                         {{-- <ul class="nav nav-tabs">  --}}
                             <li class="nav-item active">
-                              <a class="nav-link" aria-current="page" href="{{ route('home') }}">Home</a>
+                              <a class="nav-link" aria-current="page" href="{{ route('home.index') }}">Home</a>
                             </li>
                             <li class="nav-item active">
                               <a class="nav-link" href="{{ route('scale.index') }}">Escala</a>
@@ -107,6 +107,15 @@
             @yield('content')
         </main>
     </div>
+    {{-- VLIBRAS --}}
+    <div vw class="enabled">
+        <div vw-access-button class="active"></div>
+        <div vw-plugin-wrapper>
+        <div class="vw-plugin-top-wrapper"></div>
+        </div>
+    </div>
+    <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+    <script> new window.VLibras.Widget('https://vlibras.gov.br/app'); </script>
 </body>
 
 <!-- Scripts -->
