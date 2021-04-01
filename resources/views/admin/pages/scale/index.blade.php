@@ -16,7 +16,7 @@
                                     <div class="card-body text-dark">
                                         <h5 class="card-title">{{ $team->name }}</h5>
                                         <div class="btn-group">
-                                            <a class="btn btn-secondary" href="{{ route('scale.create') }}"><i class="fas fa-plus"></i> Criar</a>
+                                            <a class="btn btn-secondary" href="{{ route('scale.create', $team->id) }}"><i class="fas fa-plus"></i> Criar</a>
                                             @isset($scale)
                                                 <a class="btn btn-secondary" href="{{ route('scale.show', $team->id) }}"><i class="fas fa-eye"></i></a>
                                             @endisset

@@ -8,6 +8,7 @@ use App\Models\Team;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Request as FacadesRequest;
 
 class ScaleController extends Controller
 {
@@ -18,9 +19,11 @@ class ScaleController extends Controller
      */
     public function index()
     {
+        //return all the teams
         $allTeam = DB::table('tb_team')
                         ->select('id', 'name')
                         ->get();
+        //return escale
         $scale = DB::table('tb_scales')
                     ->join('tb_team', 'team_id', '=', 'tb_team.id')
                     ->join('tb_events', 'event_id', '=', 'tb_events.id')
@@ -31,6 +34,7 @@ class ScaleController extends Controller
                             'tb_events.date',
                             'tb_users.name as userName')
                     ->get();
+        
         return view('admin.pages.scale.index', ['allTeam' => $allTeam, 'scale' => $scale]);
     }
 
@@ -39,18 +43,29 @@ class ScaleController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
+        $id = $request->id;
         $users  = User::all();
         $team   = Team::all();
         $events = Event::all();
         $scales = Scale::all();
+
+        $allUserOfTheTeam = DB::table('tb_group_team_to_user')
+                                ->select('tb_users.name as userName',
+                                         'tb_team.name as teamName')
+                                ->join('tb_users', 'user_id', '=', 'tb_users.id')
+                                ->join('tb_team', 'team_id', '=', 'tb_team.id')
+                                ->where('tb_team.id', '=', $id)
+                                ->get();
+
         return view('admin\pages\scale\create',
                     [
                         'users'  => $users,
                         'team'   => $team,
                         'events' => $events,
-                        'scales' => $scales
+                        'scales' => $scales,
+                        'allUserOfTheTeam' => $allUserOfTheTeam
                     ]);
     }
 
