@@ -14,8 +14,8 @@ class CreateGroupEventsToTeamTable extends Migration
     public function up()
     {
         Schema::create('tb_group_Events_To_Team', function (Blueprint $table) {
-            $table->integer('event_id')->unique();
-            $table->integer('team_id')->unique();
+            $table->integer('event_id');
+            $table->integer('team_id');
             $table->foreign('event_id')->references('id')->on('tb_events');
             $table->foreign('team_id')->references('id')->on('tb_team');
             $table->timestamps();

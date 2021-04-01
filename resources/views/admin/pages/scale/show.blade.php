@@ -16,7 +16,7 @@
                                 <div class="card-body">
                                     <ul>
                                         <li>Evento: {{ $item->eventName }}</li>
-                                        <li>Data: {{ $item->date }}</li>
+                                        <li>Data: {{ date('d/m/Y', strtotime($item->date)) }}</li>
                                         <li>Responsável: {{ $item->userName }}</li>
                                     </ul>
                                     <div class="mb-3">

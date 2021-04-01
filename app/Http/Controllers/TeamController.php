@@ -24,7 +24,12 @@ class TeamController extends Controller
     public function index()
     {
         $team = Team::latest()->paginate(5);
-        return view('admin\pages\team\index', ['team' => $team]);
+        //Consulta sql para mostrar os líderes de ministério na index
+        $leaders = DB::table('tb_users')
+                    ->join('tb_team', 'leader', '=', 'tb_users.id')
+                    ->select('tb_team.id', 'tb_users.name as userName')
+                    ->get();
+        return view('admin\pages\team\index', ['team' => $team, 'leaders' => $leaders]);
     }
 
     /**
@@ -47,11 +52,6 @@ class TeamController extends Controller
     public function store(Request $request)
     {
         Team::create($request->all());
-        /*DB::table('tb_group_team_to_user')->insert([
-            'team_id' => $request['team_id'],
-            'user_id' => $request['user_id']
-        ]);*/
-
         return redirect()->route('team.index');
     }
 
@@ -63,10 +63,20 @@ class TeamController extends Controller
      */
     public function show($id)
     {
-        if (!$team = Team::find($id))
-            return redirect()->back();
+        // if (!$users = User::find($id))
+        //     return redirect()->back();
 
-        return view('admin.pages.team.show', ['team' => $team]);
+        //Consulta sql para retornar todos os users de um determinado team pelo id
+        $usersTeam = DB::table('tb_group_team_to_user')
+                        ->join('tb_users', 'user_id', '=', 'tb_users.id')
+                        ->join('tb_team', 'team_id', '=', 'tb_team.id')
+                        ->select('tb_users.id as idUser',
+                                'tb_users.name as userName',
+                                'tb_team.id as idTeam',
+                                'tb_team.name as teamName')
+                        ->where('tb_team.id', '=', $id)
+                        ->get();
+        return view('admin.pages.team.show', ['usersTeam' => $usersTeam]);
     }
 
     /**

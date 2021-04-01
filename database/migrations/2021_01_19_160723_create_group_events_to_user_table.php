@@ -14,8 +14,8 @@ class CreateGroupEventsToUserTable extends Migration
     public function up()
     {
         Schema::create('tb_group_Events_To_User', function (Blueprint $table) {
-            $table->integer('event_id')->unique();
-            $table->integer('user_id')->unique();
+            $table->integer('event_id');
+            $table->integer('user_id');
             $table->foreign('event_id')->references('id')->on('tb_events');
             $table->foreign('user_id')->references('id')->on('tb_users');
             $table->timestamps();

@@ -13,6 +13,9 @@
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
+    <!-- font-awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
     <!-- Styles -->
     <link href="{!! asset('css/app.css') !!}" rel="stylesheet">
     <link rel="stylesheet" href="{!! asset('css/bootstrap.css') !!}">
@@ -49,19 +52,19 @@
                     <ul class="navbar-nav nav-tabs me-auto mb-2 mb-lg-0">
                         {{-- <ul class="nav nav-tabs">  --}}
                             <li class="nav-item active">
-                              <a class="nav-link" aria-current="page" href="{{ route('home.index') }}">Home</a>
+                              <a class="nav-link" aria-current="page" href="{{ route('home.index') }}"><i class="fas fa-home"></i> Home</a>
                             </li>
                             <li class="nav-item active">
-                              <a class="nav-link" href="{{ route('scale.index') }}">Escala</a>
+                              <a class="nav-link" href="{{ route('scale.index') }}"><i class="fas fa-calendar-check"></i> Escala</a>
                             </li>
                             <li class="nav-item dropdown active">
                                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                    Gerenciar
+                                    <i class="fas fa-tasks"></i> Gerenciar
                                 </a>
                                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <li><a class="dropdown-item" href="{{ route('users.index') }}">Membros</a></li>
-                                    <li><a class="dropdown-item" href="{{ route('team.index') }}">Ministérios</a></li>
-                                    <li><a class="dropdown-item" href="{{ route('events.index') }}">Eventos</a></li>
+                                    <li><a class="dropdown-item" href="{{ route('users.index') }}"><i class="fas fa-users"></i> Membros</a></li>
+                                    <li><a class="dropdown-item" href="{{ route('team.index') }}"><i class="fas fa-bible"></i> Ministérios</a></li>
+                                    <li><a class="dropdown-item" href="{{ route('events.index') }}"><i class="fas fa-calendar-alt"></i> Eventos</a></li>
                                 </ul>
                             </li>
                         {{-- </ul> --}}
@@ -88,7 +91,7 @@
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
+                                                     document.getElementById('logout-form').submit();"><i class="fas fa-sign-out-alt"></i>
                                         {{ __('Logout') }}
                                     </a>
 

@@ -30,6 +30,19 @@
                         </div>
 
                         <div class="form-group row">
+                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('Ministério') }}</label>
+                            <div class="col-md-6">
+                                <select name="team" class="form-select" aria-label="Default select example">
+                                    <option value="" selected></option>
+                                    @foreach ($team as $item)
+                                        <option value="{{ $item->id }}">{{ $item->name }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+
+
+                        <div class="form-group row">
                             <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail') }}</label>
 
                             <div class="col-md-6">

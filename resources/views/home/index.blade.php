@@ -19,9 +19,11 @@
                                         <div class="card text-dark bg-light mb-3" style="max-width: 18rem;">
                                             <div class="card-header">{{ $event->name }}</div>
                                             <div class="card-body">
-                                                <h5 class="card-title">{{ date('d-m-Y', strtotime($event->date)) }}</h5>
+                                                <h5 class="card-title">{{ date('d/m/Y', strtotime($event->date)) }}</h5>
                                                 <p></p>
-                                                <a href="{{ route('home.show', $event->id) }}" type="button" class="btn btn-secondary btn-sm">Vizualizar Escala Geral</a>
+                                                <a href="{{ route('home.show', $event->id) }}" type="button" class="btn btn-secondary btn-sm">
+                                                    <i class="fas fa-eye"></i> Vizualizar Escala Geral
+                                                </a>
                                             </div>
                                         </div>
                                     @endforeach
