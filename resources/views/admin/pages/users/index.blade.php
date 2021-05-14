@@ -17,9 +17,9 @@
                                 <thead>
                                     <tr>
                                         <th>Nome</th>
-                                        <th>Ministério</th>
-                                        <th>Telefone</th>
-                                        <th>Email</th>
+                                        <th><li class="fas fa-bible"></li> Ministério</th>
+                                        <th><li class="fas fa-phone-alt"></li> Telefone</th>
+                                        <th><li class="fas fa-envelope"></li> Email</th>
                                         <th width='100'>Ações</th>
                                     </tr>
                                 </thead>
@@ -30,12 +30,12 @@
                                             <td>
                                                 @foreach ($teamUser as $item)
                                                     @if ($item->idUser == $user->id)
-                                                    <li class="fas fa-bible"></li> {{ $item->teamName }}
+                                                     {{ $item->teamName }}
                                                     @endif
                                                 @endforeach
                                             </td>
-                                            <th><li class="fas fa-phone-alt"></li> {{ $user->telephone }}</th>
-                                            <td><li class="fas fa-envelope"></li> {{ $user->email }}</td>
+                                            <th> {{ $user->telephone }}</th>
+                                            <td> {{ $user->email }}</td>
                                             <td>
                                                 <a href="{{ route('users.edit', $user->id) }}"><i class="fas fa-pencil-alt"></i></a>
                                                 <a href="{{ route('users.show', $user->id) }}"><i class="fas fa-eye"></i></a>

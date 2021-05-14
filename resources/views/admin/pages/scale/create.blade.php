@@ -3,7 +3,6 @@
 @section('title', 'Nova Escala')
 
 @section('content')
-
     <div class="container">
         <div class="container-fluid">
             <div class="justify-content-center">
@@ -16,7 +15,7 @@
                                 <select id="select-team" name="team_id" class="form-select" aria-label="Selecione o Ministério">
                                     <option selected>Ministério</option>
                                     @foreach ($team as $item)
-                                        <option value="{{ $item->id }}">{{ $item->name }}</option>
+                                        <option value="{{ $item->id }}">{{ $item->name}}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -43,6 +42,4 @@
             </div>
         </div>
     </div>
-
-
 @endsection

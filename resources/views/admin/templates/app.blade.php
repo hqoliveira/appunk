@@ -38,7 +38,7 @@
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <nav class="navbar navbar-dark bg-dark navbar-expand-lg">
             <div class="container-fluid">
                 <a class="navbar-brand" href="{{ url('/') }}">
                     {{ config('app.name', 'Laravel') }}
@@ -49,15 +49,15 @@
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav nav-tabs me-auto mb-2 mb-lg-0">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         {{-- <ul class="nav nav-tabs">  --}}
-                            <li class="nav-item active">
+                            <li class="nav-item">
                               <a class="nav-link" aria-current="page" href="{{ route('home.index') }}"><i class="fas fa-home"></i> Home</a>
                             </li>
-                            <li class="nav-item active">
-                              <a class="nav-link" href="{{ route('scale.index') }}"><i class="fas fa-calendar-check"></i> Escala</a>
+                            <li class="nav-item">
+                              <a class="nav-link" href="{{ route('scale.index') }}"><i class="fas fa-calendar-check"></i> Escalas</a>
                             </li>
-                            <li class="nav-item dropdown active">
+                            <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                     <i class="fas fa-tasks"></i> Gerenciar
                                 </a>
@@ -77,11 +77,11 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
                             </li>
-                            @if (Route::has('register'))
+                            {{-- @if (Route::has('register'))
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
                                 </li>
-                            @endif
+                            @endif --}}
                         @else
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
