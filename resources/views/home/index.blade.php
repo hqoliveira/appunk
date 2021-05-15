@@ -1,11 +1,15 @@
 @extends('admin.templates.app')
 
 @section('content')
-<div class="container-fluid">
-    <div class="row justify-content-center">
-        <div class="col-md-11">
+<div class="container">
+    <div class="container-fluid">
+        <div class="justify-content-center">
+            <div class="row page-titles">
+                <div class="col-md-12 align-self-center">
+                    <h3 class="text-themecolor mb-0 mt-0">Proximos Eventos...</h3>
+                </div>
+            </div>
             <div class="card">
-                <div class="card-header">{{ __('Proximos Eventos...') }}</div>
                 <div class="card-body">
                     @if (session('status'))
                         <div class="alert alert-success" role="alert">
@@ -26,7 +30,6 @@
                                     </div>
                                 </div>
                             @endforeach
-                            </div>
                         </div>
                     </div>
                     {{ $events->links() }}

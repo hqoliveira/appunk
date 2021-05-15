@@ -4,8 +4,12 @@
     <div class="container">
         <div class="container-fluid">
             <div class="justify-content-center">
+                <div class="row page-titles">
+                    <div class="col-md-12 align-self-center">
+                        <h3 class="text-themecolor mb-0 mt-0">Escalas</h3>
+                    </div>
+                </div>
                 <div class="card" >
-                    <div class="card-header">{{ __('Escalas') }}</div>
                     <div class="card-body">
                         <div class="d-grid gap-2 d-md-flex justify-content-md-end">
                             <a class="btn btn-secondary btn-sm" href="{{ route("scale.create") }}"><li class="fas fa-plus"></li> Adicionar Escala</a>
@@ -23,7 +27,7 @@
                                 <tbody>
                                     @foreach ($scale as $item)
                                         <tr>
-                                            <td><a href="{{ route('scale.show', $item->id) }}">{{ $item->eventName }}</td>
+                                            <td><a href="{{ route('scale.show', $item->scale_id) }}">{{ $item->eventName }}</td>
                                             <td> {{ $item->teamName }} </a></td>
                                             @foreach ($leaders as $leader)
                                                 @if ($item->idTeam == $leader->id)

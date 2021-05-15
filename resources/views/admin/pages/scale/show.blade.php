@@ -3,8 +3,58 @@
 @section('title', 'Escala Ministério')
 
 @section('content')
+<div class="container">
+    <div class="container-fluid">
+        <div class="justify-content-center">
+            <div class="row page-titles">
+                <div class="col-md-12 align-self-center">
+                    <h3 class="text-themecolor mb-0 mt-0">Detalhes da escala</h3>
+                </div>
+            </div>
+            @foreach ($scale as $item)
+            <div class="row mt-3 form-inline">
+                <div class="col-md-6">
+                    <a class="btn btn-outline-secondary btn-sm" href="{{ route("scale.index") }}">
+                        <em class="fas fa-arrow-left" aria-hidden="true"></em> Voltar
+                    </a>
+                </div>
+                <div class="col-md-6 text-right">
+                    <a class="btn btn-outline-secondary btn-sm" href="{{ route("scale.edit", $item->idScale) }}">
+                        <em class="fas fa-pen" aria-hidden="true"></em> Editar
+                    </a>
+                </div>
+            </div>
+            
+            <div class="row mt-3">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="col-md-12">
+                                <small class="text-muted">Descrição</small>
+                                <h6>{{ $item->eventName }}</h6>
+                            </div>
+                            <div class="col-md-12">
+                                <small class="text-muted">Ministério</small>
+                                <h6>{{ $item->teamName }}</h6>
+                            </div>
+                            <div class="col-md-12">
+                                <small class="text-muted">Data do Evento</small>
+                                <h6>{{ date('d/m/Y', strtotime($item->date)) }}</h6>
+                            </div>
+                            <div class="col-md-12">
+                                <small class="text-muted">Responsável</small>
+                                <h6>{{ $item->userName }}</h6>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            @endforeach
+        </div>
+    </div>
+</div>
 
-    <div class="container">
+    {{-- <div class="container">
         <div class="container-fluid">
             <div class="justify-content-center">
                 <div class="col-md-8">
@@ -35,5 +85,5 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
 @endsection
